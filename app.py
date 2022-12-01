@@ -12,7 +12,7 @@ def index():
     if request.method == "POST":
         animal = request.form["animal"]
         response = openai.Completion.create(
-            model="text-davinci-002",
+            model= "text-babbage-001", # "text-davinci-002"
             prompt=generate_prompt(animal),
             temperature=0.6,
         )
@@ -33,3 +33,5 @@ Animal: {}
 Names:""".format(
         animal.capitalize()
     )
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5001, debug=True)
